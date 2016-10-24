@@ -4,4 +4,5 @@ import NN
 
 main :: IO ()
 main = do
-  putStrLn createNN
+  let net = createFullMeshNetwork 2 [3, 2] 1
+  putStrLn $ printNetwork net
