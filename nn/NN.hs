@@ -59,10 +59,10 @@ mapNet' :: b -> ((Neuron, b) -> (Neuron, b)) -> Network -> (Network, b)
 mapNet' s f [] = ([], s)
 mapNet' s f [x] =
     let (res, nxt) = f (x, s)
-        (a, b) = mapNet' nxt f (map source $ case x of
+        (a, b) = mapNet' nxt f (map source $ case res of
             Neuron _ i -> i
             _          -> [])
-        a' = map (\(ai, si) -> Connection {weight = weight si, source = ai}) $ zip a (case x of
+        a' = map (\(ai, si) -> Connection {weight = weight si, source = ai}) $ zip a (case res of
             Neuron _ i -> i
             _          -> [])
     in ([case res of
@@ -70,10 +70,10 @@ mapNet' s f [x] =
         _                 -> res], b)
 mapNet' s f (x:xs) =
     let (res, nxt) = f (x, s)
-        (a, b) = mapNet' nxt f (map source $ case x of
+        (a, b) = mapNet' nxt f (map source $ case res of
             Neuron _ i -> i
             _          -> [])
-        a' = map (\(aim, sim) -> Connection {weight = weight sim, source = aim}) $ zip a (case x of
+        a' = map (\(aim, sim) -> Connection {weight = weight sim, source = aim}) $ zip a (case res of
             Neuron _ i -> i
             _          -> [])
         (res', nxt') = mapNet' b f xs
@@ -87,9 +87,19 @@ mapNetOnce f net = map f $ nubBy (\x y -> nid x == nid y) $ mapNet id net
 mapConnections :: a -> ((Connection, a) -> (Connection, a)) -> Network -> (Network, a)
 mapConnections s f =
     mapNet' s (\(x, prev) -> case x of
-        Neuron nid inputs -> let i = tail $ foldr (\a b -> f (a, snd $ last b) : b) [(Connection{source=InputNeuron{nid="",value=0}, weight=0},prev)] inputs
-                             in (Neuron {nid = nid, inputs = map fst i}, snd $ last i)
+        Neuron nid inputs ->
+            let (cons, nxt) = modifyCons prev f inputs
+            in (Neuron{nid = nid, inputs = cons}, nxt)
         _ -> (x, prev))
+    where modifyCons :: a -> ((Connection, a) -> (Connection, a)) -> [Connection] -> ([Connection], a)
+          modifyCons s f [] = ([], s)
+          modifyCons s f [c] =
+              let (c', nxt) = f (c, s)
+              in ([c'], nxt)
+          modifyCons s f (c:cs) =
+              let (c', nxt) = f (c, s)
+                  (cs', nxt') = modifyCons nxt f cs
+              in (c' : cs', nxt')
 
 think :: Neuron -> Float
 think (InputNeuron _ value) = value
