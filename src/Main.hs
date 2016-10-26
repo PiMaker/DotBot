@@ -2,46 +2,20 @@ module Main where
 
 import NN
 import System.Random.Mersenne.Pure64
-import Control.Monad
+
+import Graphics.Gloss
+
+window :: Display
+window = InWindow "Nice Window" (200, 200) (10, 10)
+
+background :: Color
+background = white
+
+drawing :: Picture
+drawing = circle 80
 
 main :: IO ()
-main = do
-  putStrLn "Commencing NN evaluation..."
-  let net = createFullMeshNetwork 2 [2] 1
-  rng <- newPureMT
-
-  result <- test 500 net rng
-
-  putStrLn result
-
-test :: Int -> Network -> PureMT -> IO String
-test 0 _ _ = return "Done!"
-test i net rng = do
-  -- Train the network
-  (trainedNet, rng') <- trainNetWithGA net (\n -> -- Training data:
-    outputDistance [0.0,0.0] [0.0] n +
-    outputDistance [1.0,0.0] [1.0] n +
-    outputDistance [0.0,1.0] [1.0] n +
-    outputDistance [1.0,1.0] [0.0] n)
-    0.2 -- multiplier
-    80 -- chrildren
-    1000 -- iterations
-    1 -- threshold for early conversion detection
-    rng
-
-  let x1 = round $ head (thinkNet trainedNet [0,0])
-  let x2 = round $ head (thinkNet trainedNet [1,0])
-  let x3 = round $ head (thinkNet trainedNet [0,1])
-  let x4 = round $ head (thinkNet trainedNet [1,1])
-
-  if x1 /= 0 || x2 /= 1 || x3 /= 1 || x4 /= 0 then
-    return $ "Validation failed at: " ++ show rng
-  else do
-    putStrLn ("==== Test complete, remaining: " ++ show i)
-    test (i-1) net rng'
-
-
-
+main = display window background drawing
 
 
 -- For demonstrational purposes, not actually used
