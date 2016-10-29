@@ -1,0 +1,224 @@
+	Sat Oct 29 19:59 2016 Time and Allocation Profiling Report  (Final)
+
+	   DotBot +RTS -p -RTS
+
+	total time  =        4.23 secs   (4228 ticks @ 1000 us, 1 processor)
+	total alloc = 6,967,406,568 bytes  (excludes profiling overheads)
+
+COST CENTRE                            MODULE  %time %alloc
+
+think                                  NN       18.9   20.7
+sigmoid                                NN       10.2    1.1
+mapNet'                                NN       10.0   11.2
+outputDistance                         NN        8.3    9.8
+trainNetWithGA'.genRands.(...).\.(...) NN        6.8    9.4
+trainNetWithGA'.genRands.(...).\       NN        4.7    5.2
+thinkNet.i'                            NN        3.7    6.9
+mapConnections.modifyCons              NN        3.4    5.9
+valueFromConnection                    NN        3.3    2.2
+readInt                                NN        2.9    5.1
+mapNet'.a'                             NN        2.2    3.8
+mapNet'.(...)                          NN        2.1    2.4
+mapConnections.modifyCons.c'           NN        2.0    0.0
+mapConnections.\                       NN        1.7    2.2
+source                                 NN        1.3    0.0
+mapNet'.(...)                          NN        1.3    1.4
+thinkNet                               NN        1.1    2.9
+trainNetWithGA'.genRands.(...).\.calc  NN        1.1    0.5
+mapNet'.a'                             NN        0.8    1.9
+trainNetWithGA'.genRands               NN        0.7    1.3
+
+
+                                                                                                                   individual      inherited
+COST CENTRE                                             MODULE                                no.       entries  %time %alloc   %time %alloc
+
+MAIN                                                    MAIN                                  15481          0    0.0    0.0   100.0  100.0
+ main                                                   Main                                  30963          0    0.0    0.0   100.0  100.0
+  benchmark                                             Main                                  30966          4    0.0    0.0   100.0  100.0
+   timeItT                                              System.TimeIt                         30967          5    0.0    0.0   100.0  100.0
+    timeItT.t                                           System.TimeIt                         31136          5    0.0    0.0     0.0    0.0
+    trainNetWithGA                                      NN                                    30968         11    0.0    0.0   100.0  100.0
+     trainNetWithGA'                                    NN                                    30969       7617    0.6    0.1   100.0  100.0
+      allTheSame                                        NN                                    31134       1406    0.0    0.0     0.0    0.0
+      trainNetWithGA'.rng'                              NN                                    31119       7604    0.0    0.0     0.0    0.0
+      trainNetWithGA'.(...)                             NN                                    30975       7605    0.0    0.0    49.0   50.3
+       trainNetWithGA'.genRands                         NN                                    30976     387855    0.7    1.3    49.0   50.3
+        trainNetWithGA'.genRands.r''                    NN                                    31120     380200    0.2    0.0     0.2    0.0
+        trainNetWithGA'.genRands.r'                     NN                                    31018     380249    0.1    0.0     0.1    0.0
+        trainNetWithGA'.genRands.(...)                  NN                                    30986     380250    0.1    0.2    47.6   48.9
+         mapConnections                                 NN                                    30987     380250    0.2    0.2    47.5   48.8
+          mapNet'                                       NN                                    30988    4182748   10.0   11.2    47.3   48.6
+           mapNet'.res'                                 NN                                    31107    1140150    0.4    0.0     0.4    0.0
+           mapNet'.a'                                   NN                                    31094     380050    0.8    1.9     1.0    1.9
+            mapNet'.a'.\                                NN                                    31095     760100    0.1    0.0     0.2    0.0
+             weight                                     NN                                    31096     760100    0.1    0.0     0.1    0.0
+           mapNet'.a                                    NN                                    31093     380050    0.0    0.0     0.0    0.0
+           mapNet'.nxt                                  NN                                    31041    1140749    0.2    0.0     0.2    0.0
+           mapNet'.(...)                                NN                                    31038    1140750    0.4    0.4     8.7    9.1
+            mapConnections.\                            NN                                    31039    1140750    0.7    0.7     8.3    8.7
+             mapConnections.\.nxt                       NN                                    31065     380250    0.0    0.0     0.0    0.0
+             mapConnections.\.(...)                     NN                                    31050     380250    0.1    0.1     7.5    8.0
+              mapConnections.modifyCons                 NN                                    31051     760500    1.1    2.0     7.3    7.9
+               mapConnections.modifyCons.nxt            NN                                    31070     380250    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.nxt            NN                                    31067     380250    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.nxt'           NN                                    31066     380250    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.(...)          NN                                    31062     380250    0.2    0.3     3.1    2.9
+                trainNetWithGA'.genRands.(...).\        NN                                    31063     380250    0.9    0.9     2.9    2.6
+                 trainNetWithGA'.genRands.(...).\.calc  NN                                    31100     380050    0.2    0.1     0.2    0.1
+                  weight                                NN                                    31101     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval  NN                                    31099     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval' NN                                    31097     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.(...) NN                                    31072     380250    1.6    1.6     1.6    1.7
+                  lookupBlock                           System.Random.Mersenne.Pure64.MTBlock 31098     380050    0.0    0.1     0.0    0.1
+                 trainNetWithGA'.genRands.(...).\.ri'   NN                                    31071     380250    0.0    0.0     0.0    0.0
+                 source                                 NN                                    31064     380250    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.c'             NN                                    31061     380250    0.2    0.0     0.2    0.0
+               mapConnections.modifyCons.(...)          NN                                    31058     380250    0.2    0.3     2.0    2.9
+                trainNetWithGA'.genRands.(...).\        NN                                    31059     380250    0.7    0.9     1.8    2.6
+                 trainNetWithGA'.genRands.(...).\.calc  NN                                    31111     380050    0.1    0.1     0.1    0.1
+                  weight                                NN                                    31112     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval  NN                                    31110     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval' NN                                    31108     380050    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.(...) NN                                    31069     380250    0.9    1.6     1.0    1.7
+                  lookupBlock                           System.Random.Mersenne.Pure64.MTBlock 31109     380050    0.1    0.1     0.1    0.1
+                 trainNetWithGA'.genRands.(...).\.ri'   NN                                    31068     380250    0.0    0.0     0.0    0.0
+                 source                                 NN                                    31060     380250    0.0    0.0     0.0    0.0
+               mapConnections.modifyCons.c'             NN                                    31057     380250    0.4    0.0     0.4    0.0
+               mapConnections.modifyCons.(...)          NN                                    31053     380250    0.2    0.1     0.2    0.1
+               mapConnections.modifyCons.cs'            NN                                    31052     380250    0.0    0.0     0.0    0.0
+             mapConnections.\.cons                      NN                                    31049     380250    0.0    0.0     0.0    0.0
+           mapNet'.res                                  NN                                    31037    1140750    0.2    0.0     0.2    0.0
+           mapNet'.(...)                                NN                                    31036    1140749    1.3    1.4     1.8    1.4
+            source                                      NN                                    31056     760500    0.5    0.0     0.5    0.0
+           mapNet'.b                                    NN                                    31035    1140749    0.3    0.0     0.3    0.0
+           mapNet'.nxt                                  NN                                    31034    1520998    0.3    0.0     0.3    0.0
+           mapNet'.(...)                                NN                                    31021    1140750    0.8    0.4     0.8    0.4
+           mapNet'.nxt'                                 NN                                    31020    1140748    0.3    0.0     0.3    0.0
+           mapNet'.b                                    NN                                    31019    1520997    0.2    0.0     0.2    0.0
+           mapNet'.a'                                   NN                                    31009     760100    2.2    3.8     2.8    3.8
+            mapNet'.a'.\                                NN                                    31011    1520200    0.2    0.0     0.6    0.0
+             weight                                     NN                                    31012    1520200    0.4    0.0     0.4    0.0
+           mapNet'.(...)                                NN                                    31003    1520999    2.1    2.4     2.3    2.4
+            source                                      NN                                    31024    1521000    0.3    0.0     0.3    0.0
+           mapNet'.a                                    NN                                    31002     760100    0.0    0.0     0.0    0.0
+           mapNet'.(...)                                NN                                    30996    1521000    0.5    0.5    17.7   18.3
+            mapConnections.\                            NN                                    30997    1521000    1.0    1.5    17.3   17.7
+             mapConnections.\.nxt                       NN                                    31042     760499    0.0    0.0     0.0    0.0
+             mapConnections.\.(...)                     NN                                    31005     760500    0.4    0.3    16.0   16.2
+              mapConnections.modifyCons                 NN                                    31006    1521000    2.3    3.9    15.7   16.0
+               mapConnections.modifyCons.nxt            NN                                    31047     760500    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.nxt            NN                                    31044     760499    0.1    0.0     0.1    0.0
+               mapConnections.modifyCons.nxt'           NN                                    31043     760499    0.3    0.0     0.3    0.0
+               mapConnections.modifyCons.(...)          NN                                    31026     760500    0.6    0.5     4.9    6.0
+                trainNetWithGA'.genRands.(...).\        NN                                    31027     760500    1.5    1.7     4.4    5.5
+                 trainNetWithGA'.genRands.(...).\.calc  NN                                    31116     760100    0.4    0.2     0.4    0.2
+                  weight                                NN                                    31117     760100    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval  NN                                    31115     760100    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval' NN                                    31113     760100    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.(...) NN                                    31046     760500    1.8    3.1     2.1    3.6
+                  mkPureMT                              System.Random.Mersenne.Pure64         31121       7312    0.0    0.0     0.2    0.3
+                   nextBlock                            System.Random.Mersenne.Pure64.MTBlock 31128       7311    0.1    0.0     0.1    0.3
+                    touch                               System.Random.Mersenne.Pure64.MTBlock 31132      14622    0.0    0.0     0.0    0.0
+                     touch.\                            System.Random.Mersenne.Pure64.MTBlock 31133      14622    0.0    0.0     0.0    0.0
+                    blockAsPtr                          System.Random.Mersenne.Pure64.MTBlock 31131      14622    0.0    0.0     0.0    0.0
+                    allocateBlock                       System.Random.Mersenne.Pure64.MTBlock 31129          0    0.0    0.0     0.0    0.3
+                     allocateBlock.\                    System.Random.Mersenne.Pure64.MTBlock 31130       7311    0.0    0.3     0.0    0.3
+                  lookupBlock                           System.Random.Mersenne.Pure64.MTBlock 31114     760100    0.1    0.2     0.1    0.2
+                 trainNetWithGA'.genRands.(...).\.ri'   NN                                    31045     760499    0.1    0.0     0.1    0.0
+                 source                                 NN                                    31028     760500    0.2    0.0     0.2    0.0
+               mapConnections.modifyCons.c'             NN                                    31025     760500    1.6    0.0     1.6    0.0
+               mapConnections.modifyCons.(...)          NN                                    31014     760500    0.5    0.5     5.4    5.8
+                trainNetWithGA'.genRands.(...).\        NN                                    31015     760500    1.5    1.7     4.9    5.2
+                 trainNetWithGA'.genRands.(...).\.calc  NN                                    31091     760100    0.4    0.2     0.4    0.2
+                  weight                                NN                                    31092     760100    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.rval  NN                                    31090     760100    0.0    0.0     0.0    0.0
+                 trainNetWithGA'.genRands.(...).\.ri'   NN                                    31048     760500    0.2    0.0     0.2    0.0
+                 source                                 NN                                    31040     760500    0.1    0.0     0.1    0.0
+                 trainNetWithGA'.genRands.(...).\.(...) NN                                    31017     760500    2.5    3.1     2.6    3.3
+                  lookupBlock                           System.Random.Mersenne.Pure64.MTBlock 31089     760100    0.1    0.2     0.1    0.2
+                 trainNetWithGA'.genRands.(...).\.rval' NN                                    31016     760100    0.0    0.0     0.0    0.0
+               mapConnections.modifyCons.c'             NN                                    31013     760500    0.4    0.0     0.4    0.0
+               mapConnections.modifyCons.(...)          NN                                    31008     760500    0.4    0.3     0.4    0.3
+               mapConnections.modifyCons.cs'            NN                                    31007     760500    0.1    0.0     0.1    0.0
+             mapConnections.\.cons                      NN                                    31004     760500    0.2    0.0     0.2    0.0
+           mapNet'.res                                  NN                                    30995    1521000    0.3    0.0     0.3    0.0
+        trainNetWithGA'.genRands.net'                   NN                                    30985     380050    0.1    0.0     0.1    0.0
+        trainNetWithGA'.genRands.(...)                  NN                                    30979     380250    0.2    0.1     0.2    0.1
+        trainNetWithGA'.genRands.mnet                   NN                                    30978     380050    0.0    0.0     0.0    0.0
+      trainNetWithGA'.net'                              NN                                    30974       7601    0.0    0.0     0.0    0.0
+      trainNetWithGA'.bestNet                           NN                                    30973       7601    0.2    0.0     0.3    0.0
+       trainNetWithGA'.bestNet.\                        NN                                    30980     387651    0.2    0.0     0.2    0.0
+      trainNetWithGA'.net''                             NN                                    30972       7601    0.0    0.0     0.0    0.0
+      trainNetWithGA'.costlyNets                        NN                                    30971       7601    0.4    0.8    50.0   49.6
+       trainNetWithGA'.costlyNets.\                     NN                                    30977     395252    0.7    0.1    49.7   48.7
+        benchmark.\                                     Main                                  30981     395252    0.4    0.0    49.0   48.7
+         outputDistance                                 NN                                    30982    1581008    8.3    9.8    48.6   48.7
+          outputDistance.oact                           NN                                    30983    1581008    0.3    0.0    40.4   38.8
+           thinkNet                                     NN                                    30984    1581008    1.1    2.9    40.1   38.8
+            thinkNet.i'                                 NN                                    31104    1581008    3.7    6.9     3.7    6.9
+            think                                       NN                                    30994   11067056   18.9   20.7    35.2   29.0
+             readInt                                    NN                                    31103    6324032    2.9    5.1     2.9    5.1
+             valueFromConnection                        NN                                    31010    9486048    3.3    2.2     3.3    2.2
+             sigmoid                                    NN                                    31000    4743024   10.2    1.1    10.2    1.1
+      trainNetWithGA'.sameThreshold                     NN                                    30970       7612    0.0    0.0     0.0    0.0
+ CAF:main1                                              Main                                  30960          0    0.0    0.0     0.0    0.0
+  main                                                  Main                                  30962          1    0.0    0.0     0.0    0.0
+ CAF:main3_rghK                                         Main                                  30959          0    0.0    0.0     0.0    0.0
+  main                                                  Main                                  30964          0    0.0    0.0     0.0    0.0
+   main.rng                                             Main                                  31073          1    0.0    0.0     0.0    0.0
+   main.net                                             Main                                  30989          1    0.0    0.0     0.0    0.0
+   benchmark                                            Main                                  30965          1    0.0    0.0     0.0    0.0
+ CAF:lvl19_rghJ                                         Main                                  30958          0    0.0    0.0     0.0    0.0
+  main                                                  Main                                  31074          0    0.0    0.0     0.0    0.0
+   main.rng                                             Main                                  31075          0    0.0    0.0     0.0    0.0
+    pureMT                                              System.Random.Mersenne.Pure64         31077          0    0.0    0.0     0.0    0.0
+     mkPureMT                                           System.Random.Mersenne.Pure64         31086          1    0.0    0.0     0.0    0.0
+      nextBlock                                         System.Random.Mersenne.Pure64.MTBlock 31122          1    0.0    0.0     0.0    0.0
+       touch                                            System.Random.Mersenne.Pure64.MTBlock 31126          2    0.0    0.0     0.0    0.0
+        touch.\                                         System.Random.Mersenne.Pure64.MTBlock 31127          2    0.0    0.0     0.0    0.0
+       blockAsPtr                                       System.Random.Mersenne.Pure64.MTBlock 31125          2    0.0    0.0     0.0    0.0
+       allocateBlock                                    System.Random.Mersenne.Pure64.MTBlock 31123          0    0.0    0.0     0.0    0.0
+        allocateBlock.\                                 System.Random.Mersenne.Pure64.MTBlock 31124          1    0.0    0.0     0.0    0.0
+     seedBlock                                          System.Random.Mersenne.Pure64.MTBlock 31078          1    0.0    0.0     0.0    0.0
+      touch                                             System.Random.Mersenne.Pure64.MTBlock 31084          1    0.0    0.0     0.0    0.0
+       touch.\                                          System.Random.Mersenne.Pure64.MTBlock 31085          1    0.0    0.0     0.0    0.0
+      blockAsPtr                                        System.Random.Mersenne.Pure64.MTBlock 31083          3    0.0    0.0     0.0    0.0
+      allocateBlock                                     System.Random.Mersenne.Pure64.MTBlock 31081          0    0.0    0.0     0.0    0.0
+       allocateBlock.\                                  System.Random.Mersenne.Pure64.MTBlock 31082          1    0.0    0.0     0.0    0.0
+ CAF:lvl17_rghH                                         Main                                  30957          0    0.0    0.0     0.0    0.0
+  main                                                  Main                                  30990          0    0.0    0.0     0.0    0.0
+   main.net                                             Main                                  30991          0    0.0    0.0     0.0    0.0
+    createFullMeshNetwork                               NN                                    30992          2    0.0    0.0     0.0    0.0
+     createFullMeshNetwork.inputNeurons                 NN                                    31031          1    0.0    0.0     0.0    0.0
+      createFullMeshNetwork.inputNeurons.\              NN                                    31102          2    0.0    0.0     0.0    0.0
+      createFullMeshNetwork.inputNeurons.\              NN                                    31033          2    0.0    0.0     0.0    0.0
+     meshNeuron                                         NN                                    31030          2    0.0    0.0     0.0    0.0
+      connectionFromNeuron                              NN                                    31032          2    0.0    0.0     0.0    0.0
+     createFullMeshNetwork.m                            NN                                    30998          1    0.0    0.0     0.0    0.0
+      meshNeuron                                        NN                                    30999          1    0.0    0.0     0.0    0.0
+       connectionFromNeuron                             NN                                    31029          2    0.0    0.0     0.0    0.0
+ CAF:lvl13_r8Xh                                         NN                                    30941          0    0.0    0.0     0.0    0.0
+  trainNetWithGA'                                       NN                                    31118          0    0.0    0.0     0.0    0.0
+ CAF:e_rZx                                              NN                                    30935          0    0.0    0.0     0.0    0.0
+  e                                                     NN                                    31001          1    0.0    0.0     0.0    0.0
+ CAF:thinkNet1                                          NN                                    30927          0    0.0    0.0     0.0    0.0
+  thinkNet                                              NN                                    31105          0    0.0    0.0     0.0    0.0
+   thinkNet.i'                                          NN                                    31106          0    0.0    0.0     0.0    0.0
+ CAF:lvl_r8WO                                           NN                                    30925          0    0.0    0.0     0.0    0.0
+  trainNetWithGA                                        NN                                    31135          0    0.0    0.0     0.0    0.0
+ CAF:pureMT                                             System.Random.Mersenne.Pure64         30921          0    0.0    0.0     0.0    0.0
+  pureMT                                                System.Random.Mersenne.Pure64         31076          1    0.0    0.0     0.0    0.0
+ CAF:blockSize                                          System.Random.Mersenne.Pure64.Base    30912          0    0.0    0.0     0.0    0.0
+  blockSize                                             System.Random.Mersenne.Pure64.Base    31080          1    0.0    0.0     0.0    0.0
+ CAF:blockLen                                           System.Random.Mersenne.Pure64.Base    30911          0    0.0    0.0     0.0    0.0
+  blockLen                                              System.Random.Mersenne.Pure64.Base    31087          1    0.0    0.0     0.0    0.0
+ CAF:mixWord64                                          System.Random.Mersenne.Pure64.MTBlock 30909          0    0.0    0.0     0.0    0.0
+  mixWord64                                             System.Random.Mersenne.Pure64.MTBlock 31088          1    0.0    0.0     0.0    0.0
+ CAF:allocateBlock_r5qJ                                 System.Random.Mersenne.Pure64.MTBlock 30908          0    0.0    0.0     0.0    0.0
+  allocateBlock                                         System.Random.Mersenne.Pure64.MTBlock 31079          1    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.Float                             15541          0    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.IO.Encoding                       15540          0    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.IO.Handle.FD                      15537          0    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.IO.Handle.Text                    15535          0    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.IO.Encoding.Iconv                 15516          0    0.0    0.0     0.0    0.0
+ CAF                                                    GHC.Conc.Signal                       15503          0    0.0    0.0     0.0    0.0
