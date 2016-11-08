@@ -79,7 +79,11 @@ think i (Neuron _ inputs)     = sigmoid . sum $ map (valueFromConnection i) inpu
 e = exp 1 :: Float
 
 sigmoid :: Float -> Float
-sigmoid t = 0.5 * (t / (1 + abs t)) + 0.5 -- TODO ( 1/(1+e**(-t)) )
+sigmoid t = 0.5 * tanh(t * 0.5) + 0.5
+-- Activation functions
+-- Fast Sigmoid: 0.5 * (t / (1 + abs t)) + 0.5
+-- Sigmoid: 1/(1+e**(-t))
+-- Tanh: 0.5 * tanh(t * 0.5) + 0.5
 
 valueFromConnection :: InputMap -> Connection -> Float
 valueFromConnection m (Connection w s) = w * think m s
@@ -88,30 +92,6 @@ readInt :: B.ByteString -> Int
 readInt bs = case B.readInt bs of
                 Just (x, _) -> x
                 Nothing -> error "This should never happen (input neuron number could not be parsed)"
-
-{-
-thinkNet' :: Network -> [Float] -> Network
-thinkNet' net i =
-    let i' = M.fromList $ zip [1..] i
-    in mapInputNeurons (\(InputNeuron nid _) -> InputNeuron {nid = nid, value = M.findWithDefault 0 (inputId nid) i'}) net
-
-thinkNet :: Network -> [Float] -> [Float]
-thinkNet net i =
-    map think $ thinkNet' net i
-
-inputId :: B.ByteString -> Int
-inputId = readInt . B.tail
-
-mapInputNeurons :: (Neuron -> Neuron) -> Network -> Network
-mapInputNeurons f [] = []
-mapInputNeurons f [Neuron nid inputs] = [Neuron {nid = nid, inputs = map (\(n, o) -> Connection {weight = weight o, source = n}) $ zip (mapInputNeurons f $ map source inputs) inputs}]
-mapInputNeurons f [n] = [f n]
-mapInputNeurons f (n:ns) = head (mapInputNeurons f [n]) : mapInputNeurons f ns
-
-think :: Neuron -> Float
-think (InputNeuron _ value) = value
-think (Neuron _ inputs)     = sigmoid . sum $ map valueFromConnection inputs
--}
 
 mapNet :: (Neuron -> a) -> Network -> [a]
 mapNet f [] = []

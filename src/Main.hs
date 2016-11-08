@@ -22,8 +22,6 @@ main' = display window background drawing
 
 main :: IO ()
 main = do
-    demo
-    {-}
   -- Create objects
   let net = createFullMeshNetwork 2 [2] 1
   let rng = pureMT 483209
@@ -50,7 +48,7 @@ benchmark net rng l = do
     1 -- threshold for early conversion detection
     rng
 
-  if length l < 4 then benchmark net rng' $ t : l else return $ t : l-}
+  if length l < 9 then benchmark net rng' $ t : l else return $ t : l
 
 
 
