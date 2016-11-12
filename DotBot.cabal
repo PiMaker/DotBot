@@ -23,5 +23,6 @@ executable DotBot
                      , parallel
                      , random
                      , mersenne-random-pure64
-                     , gloss
+                     , text
                      , timeit
+                     , websockets
