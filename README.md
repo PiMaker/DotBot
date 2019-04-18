@@ -2,6 +2,8 @@
 
 Evolution by battle and neural networks
 
+Note: At the moment nothing of this sort works, it's just a simple proof-of-concept neural network in Haskell. Functional programming is hard.
+
 ### About DotBot
 
 DotBot is an evolutionary simulation that evolves weights in neural networks by lettings two opposing forces battle and choosing the winning one as the parent of the next generation of warriors.
